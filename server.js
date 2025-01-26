@@ -14,6 +14,10 @@ const generateAccountNumber = () => (++accountCounter).toString();
 const accountFinder = (accountNumber) =>
   accounts.find((account) => account.accountNumber === accountNumber);
 
+/* Endpoint for creating account
+@input name emaild and opening balance
+@output created account
+*/
 app.post("/createAccount", (req, res) => {
   const { name, emailid, openingbalance } = req.body;
   if (
@@ -43,6 +47,10 @@ app.post("/createAccount", (req, res) => {
   console.log("Logging account details", accounts);
 });
 
+/* Endpoint for viewing account
+@input account number
+@output searched account
+*/
 app.get("/viewAccount/:accountNumber", (req, res) => {
   const { accountNumber } = req.params;
 
@@ -63,6 +71,10 @@ app.get("/viewAccount/:accountNumber", (req, res) => {
   console.log("account retrieved successfully");
 });
 
+/* Endpoint for viewing transaction history of account
+@input account number
+@output transactions
+*/
 app.get("/getTransactionHistory/:accountNumber", (req, res) => {
   const { accountNumber } = req.params;
 
@@ -91,6 +103,10 @@ app.get("/getTransactionHistory/:accountNumber", (req, res) => {
   console.log("Transaction history retrieved successfully");
 });
 
+/* Endpoint for viewing account balnce
+@input account number
+@output account balance
+*/
 app.get("/getAccountBalance/:accountNumber", (req, res) => {
   const { accountNumber } = req.params;
 
@@ -111,6 +127,10 @@ app.get("/getAccountBalance/:accountNumber", (req, res) => {
   console.log("Account balance retrieved sucecssfully");
 });
 
+/* Endpoint for viewing transaction history of account
+@input sender account , receiver account, amount
+@output transaction success
+*/
 app.post("/makeTransaction", (req, res) => {
   const { senderAcctNum, receiverAcctNum, amount } = req.body;
 
