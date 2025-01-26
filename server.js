@@ -172,13 +172,13 @@ app.post("/makeTransaction", (req, res) => {
   const senderTxn = {
     txnamt,
     txnType: "Debit",
-    to: receiveraccount.accountNumber,
+    paid_to: receiveraccount.accountNumber,
   };
 
   const receiverTxn = {
     txnamt,
     txnType: "Credit",
-    from: senderaccount.accountNumber,
+    received_from: senderaccount.accountNumber,
   };
 
   senderaccount.transactions.push(senderTxn);
